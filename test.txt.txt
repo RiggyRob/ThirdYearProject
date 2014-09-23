@@ -1,0 +1,1 @@
+This is a file to test the commit system of Git Extensions (23/09/2014).

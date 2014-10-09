@@ -1,0 +1,13 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="c:\Users\Rob\Desktop\Third_Year_Project_Work\ThirdYearProject\Unity3DTestProject\Assets\LeapMotion\Scripts\HandController.cs">
+    <Files>
+      <File FileName="Assets\LeapMotion\Scripts\Hands\FingerModel.cs" Line="10" Column="1" />
+      <File FileName="c:\Users\Rob\Desktop\Third_Year_Project_Work\ThirdYearProject\Unity3DTestProject\Assets\LeapMotion\Scripts\HandController.cs" Line="77" Column="82" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

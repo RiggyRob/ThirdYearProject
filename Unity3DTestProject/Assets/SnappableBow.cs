@@ -11,6 +11,9 @@ public class SnappableBow : MonoBehaviour {
 	public GameObject snapNode;
 
 	public bool arrowConnected = false;
+
+	public float lastArrowZPosition;
+	public float pullbackOffset; 
 	
 	// Use this for initialization
 	void Start () {
@@ -52,9 +55,31 @@ public class SnappableBow : MonoBehaviour {
 			                                           transform.position.z);
 			arrowConnected = true;
 
+			lastArrowZPosition = collision.transform.position.z;
+
 		}
 	}
-	
+
+	void detectArrowPullback()
+	{
+		GameObject snappableArrow = GameObject.Find("snappableArrow");
+
+		pullbackOffset = snappableArrow.transform.position.z - lastArrowZPosition;
+
+		// If the arrow moves past this threshold, apply a forward force proportional to the change in z position
+		// and set arrowConnected to false
+		float pullbackThreshold = 1;
+
+		if (pullbackOffset > pullbackThreshold)
+		{
+			snappableArrow.transform.parent = null;
+			snappableArrow.rigidbody.useGravity = true;
+			snappableArrow.rigidbody.AddForce(Vector3.forward * 1000 * pullbackOffset);
+			snappableArrow.rigidbody.detectCollisions = false;
+			arrowConnected = false;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		snapNode.transform.position = snappableBow.transform.position;
@@ -73,11 +98,9 @@ public class SnappableBow : MonoBehaviour {
 			                                                snappableBow.transform.position.y,
 			                                                snappableArrow.transform.position.z);
 
-			//snappableArrow.rigidbody.useGravity = false;
+			snappableArrow.rigidbody.useGravity = false;
 
+			detectArrowPullback();
 		}
-
-
-
 	}
 }

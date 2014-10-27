@@ -47,6 +47,7 @@ public class SnappableArrow : MonoBehaviour {
 		}
 	}
 
+
 	// Update is called once per frame
 	void Update () {
 		snapNode.transform.position = snappableArrow.transform.position;

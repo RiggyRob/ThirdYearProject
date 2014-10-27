@@ -37,7 +37,15 @@ public class SnappableArrow : MonoBehaviour {
 
 		snapNode.collider.isTrigger = true;
 	}
-	
+
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.tag == "snappableBow")
+		{
+			collision.transform.parent = transform;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
 		snapNode.transform.position = snappableArrowP.transform.position;

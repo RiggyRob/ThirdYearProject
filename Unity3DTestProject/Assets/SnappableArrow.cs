@@ -4,22 +4,22 @@ using System.Collections;
 public class SnappableArrow : MonoBehaviour {
 	
 	// non-primitive type arrow object
-	public GameObject snappableArrow;
+	//public GameObject snappableArrow;
 
-	public GameObject snappableArrowP;
+	public GameObject snappableArrow;
 
 	public GameObject snapNode;
 
 	// Use this for initialization
 	void Start () {
 		// primitive type arrow object
-		snappableArrowP = GameObject.CreatePrimitive (PrimitiveType.Cube);
-		snappableArrowP.AddComponent<Rigidbody> ();
-		snappableArrowP.transform.position = new Vector3 (0, 0, 0);
-		snappableArrowP.transform.rotation = new Quaternion(0,90,0,0);
-		snappableArrowP.transform.localScale = new Vector3 (0.1f, 0.1f, 5.0f);
+		//snappableArrowP = GameObject.CreatePrimitive (PrimitiveType.Cube);
+		//snappableArrowP.AddComponent<Rigidbody> ();
+		//snappableArrowP.transform.position = new Vector3 (0, 0, 0);
+		//snappableArrowP.transform.rotation = new Quaternion(0,90,0,0);
+		//snappableArrowP.transform.localScale = new Vector3 (0.1f, 0.1f, 5.0f);
 
-		AddSnapNode (snappableArrowP);
+		AddSnapNode (snappableArrow);
 	}
 	
 	void AddSnapNode(GameObject snappableArrow)
@@ -40,17 +40,18 @@ public class SnappableArrow : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision)
 	{
-		if (collision.gameObject.tag == "snappableBow")
+		if (collision.gameObject.name == "snappableBow")
 		{
-			collision.transform.parent = transform;
+			//print("Collision");
+			//collision.transform.parent = transform;
 		}
 	}
 
 	// Update is called once per frame
 	void Update () {
-		snapNode.transform.position = snappableArrowP.transform.position;
+		snapNode.transform.position = snappableArrow.transform.position;
 		// Keep the arrow object from rotating - makes it easier to control
-		snappableArrowP.transform.rotation = new Quaternion(0,90,0,0);
+		snappableArrow.transform.rotation = new Quaternion(0,90,0,0);
 
 	}
 }

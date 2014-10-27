@@ -4,22 +4,24 @@ using System.Collections;
 public class SnappableBow : MonoBehaviour {
 	
 	// non-primitive type arrow object
+	//public GameObject snappableBow;
+
 	public GameObject snappableBow;
 
-	public GameObject snappableBowP;
-
 	public GameObject snapNode;
+
+	public bool arrowConnected = false;
 	
 	// Use this for initialization
 	void Start () {
 		// primitive type arrow object
-		snappableBowP = GameObject.CreatePrimitive (PrimitiveType.Cube);
-		snappableBowP.AddComponent<Rigidbody> ();
-		snappableBowP.transform.position = new Vector3 (2, 3, -3);
-		snappableBowP.transform.rotation = new Quaternion (0, 0, 0, 0);
-		snappableBowP.transform.localScale = new Vector3 (0.5f, 5f, 0.5f);
+		//snappableBowP = GameObject.CreatePrimitive (PrimitiveType.Cube);
+		//snappableBowP.AddComponent<Rigidbody> ();
+		//snappableBowP.transform.position = new Vector3 (2, 3, -3);
+		//snappableBowP.transform.rotation = new Quaternion (0, 0, 0, 0);
+		//snappableBowP.transform.localScale = new Vector3 (0.5f, 5f, 0.5f);
 
-		AddSnapNode (snappableBowP);
+		AddSnapNode (snappableBow);
 	}
 	
 	void AddSnapNode(GameObject snappableBow)
@@ -38,12 +40,33 @@ public class SnappableBow : MonoBehaviour {
 
 		snapNode.collider.isTrigger = true;
 	}
+
+	void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.name == "snappableArrow")
+		{
+			//print("Collision");
+			collision.transform.parent = transform;
+			collision.transform.position = new Vector3(transform.position.x-0.5f,
+			                                           transform.position.y,
+			                                           transform.position.z);
+			arrowConnected = true;
+		}
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		snapNode.transform.position =snappableBowP.transform.position;
+		snapNode.transform.position = snappableBow.transform.position;
 		// Keep the bow object from rotating - makes it easier to control
-		snappableBowP.transform.rotation = new Quaternion (0, 0, 0, 0);
+		snappableBow.transform.rotation = new Quaternion (0, 0, 0, 0);
+
+		if (arrowConnected)
+		{
+			GameObject snappableArrow = GameObject.Find("snappableArrow");
+			snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x-0.5f,
+		                                                    snappableBow.transform.position.y,
+			                                                snappableBow.transform.position.z);
+		}
 
 	}
 }

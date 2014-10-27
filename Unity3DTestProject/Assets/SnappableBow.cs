@@ -51,6 +51,7 @@ public class SnappableBow : MonoBehaviour {
 			                                           transform.position.y,
 			                                           transform.position.z);
 			arrowConnected = true;
+
 		}
 	}
 	
@@ -63,10 +64,20 @@ public class SnappableBow : MonoBehaviour {
 		if (arrowConnected)
 		{
 			GameObject snappableArrow = GameObject.Find("snappableArrow");
-			snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x-0.5f,
-		                                                    snappableBow.transform.position.y,
-			                                                snappableBow.transform.position.z);
+			// Keep the arrow fixed onto the bow in the x and y axes
+			// Allow movement forwards and backwards in the z axis e.g. drawing back motion
+			//snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x-0.5f,
+			//                                                snappableBow.transform.position.y, 0);
+			//                                                snappableBow.transform.position.z);
+			snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x -0.5f,
+			                                                snappableBow.transform.position.y,
+			                                                snappableArrow.transform.position.z);
+
+			//snappableArrow.rigidbody.useGravity = false;
+
 		}
+
+
 
 	}
 }

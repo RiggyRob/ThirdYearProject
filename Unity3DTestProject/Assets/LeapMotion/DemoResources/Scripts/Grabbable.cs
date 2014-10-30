@@ -22,9 +22,12 @@ public class Grabbable : MonoBehaviour {
 
   public void OnGrab(){
     for (int i = 0; i < ignoreOnGrab.Length; ++i)
-      ignoreOnGrab[i].detectCollisions = false;
+      // We still want to detect collisions on grab
+	  //ignoreOnGrab[i].detectCollisions = true;
+	  ignoreOnGrab[i].detectCollisions = false;
 
-    if (breakableJoint != null) {
+		
+		if (breakableJoint != null) {
       breakableJoint.breakForce = breakForce;
       breakableJoint.breakTorque = breakTorque;
     }

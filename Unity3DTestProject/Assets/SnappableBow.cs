@@ -56,6 +56,7 @@ public class SnappableBow : MonoBehaviour {
 			arrowConnected = true;
 
 			lastArrowZPosition = collision.transform.position.z;
+			print ("Last arrow position in z-axis is: " + lastArrowZPosition);
 
 		}
 	}
@@ -64,19 +65,25 @@ public class SnappableBow : MonoBehaviour {
 	{
 		GameObject snappableArrow = GameObject.Find("snappableArrow");
 
-		pullbackOffset = snappableArrow.transform.position.z - lastArrowZPosition;
+		//pullbackOffset = snappableArrow.transform.position.z - lastArrowZPosition;
+		pullbackOffset = lastArrowZPosition - snappableArrow.transform.position.z;
+
+		//print ("Arrow position in z-axis is: " + snappableArrow.transform.position.z);
+		//print ("Pullback offset is: " + pullbackOffset);
 
 		// If the arrow moves past this threshold, apply a forward force proportional to the change in z position
 		// and set arrowConnected to false
-		float pullbackThreshold = 1;
+		float pullbackThreshold = 5;
 
 		if (pullbackOffset > pullbackThreshold)
 		{
-			snappableArrow.transform.parent = null;
-			snappableArrow.rigidbody.useGravity = true;
-			snappableArrow.rigidbody.AddForce(Vector3.forward * 1000 * pullbackOffset);
+			// Release the arrow if it is being grabbed
+			print ("Threshold reached!");
+     		snappableArrow.rigidbody.AddForce(Vector3.forward * /*10 */ pullbackOffset);
 			snappableArrow.rigidbody.detectCollisions = false;
 			arrowConnected = false;
+			snappableArrow.transform.parent = null;
+			snappableArrow.rigidbody.useGravity = true;
 		}
 	}
 
@@ -91,9 +98,6 @@ public class SnappableBow : MonoBehaviour {
 			GameObject snappableArrow = GameObject.Find("snappableArrow");
 			// Keep the arrow fixed onto the bow in the x and y axes
 			// Allow movement forwards and backwards in the z axis e.g. drawing back motion
-			//snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x-0.5f,
-			//                                                snappableBow.transform.position.y, 0);
-			//                                                snappableBow.transform.position.z);
 			snappableArrow.transform.position = new Vector3(snappableBow.transform.position.x -0.5f,
 			                                                snappableBow.transform.position.y,
 			                                                snappableArrow.transform.position.z);

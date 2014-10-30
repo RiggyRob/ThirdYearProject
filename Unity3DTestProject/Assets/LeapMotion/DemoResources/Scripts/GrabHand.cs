@@ -56,8 +56,11 @@ public class GrabHand : MonoBehaviour {
 
     if (grabbed_ != null) {
       grabbed_.rigidbody.maxAngularVelocity = Mathf.Infinity;
-      grabbed_.rigidbody.detectCollisions = false;
-      palm_rotation_ = hand_model.GetPalmRotation();
+	  // We want to still detect collisions on grab
+	  //grabbed_.rigidbody.detectCollisions = true;
+	  grabbed_.rigidbody.detectCollisions = false;
+
+	  palm_rotation_ = hand_model.GetPalmRotation();
       palm_position_ = hand_model.GetPalmPosition();
       start_rotation_ = grabbed_.transform.rotation * Quaternion.Inverse(palm_rotation_);
       start_position_ = Quaternion.Inverse(palm_rotation_) *
@@ -70,10 +73,11 @@ public class GrabHand : MonoBehaviour {
 
   void OnRelease() {
     pinching_ = false;
-    if (grabbed_ != null) {
+
+	if (grabbed_ != null) {
       grabbed_.rigidbody.maxAngularVelocity = 7.0f;
       grabbed_.rigidbody.detectCollisions = true;
-
+	
       Grabbable grabbable = grabbed_.GetComponent<Grabbable>();
       if (grabbable != null)
         grabbable.OnRelease();

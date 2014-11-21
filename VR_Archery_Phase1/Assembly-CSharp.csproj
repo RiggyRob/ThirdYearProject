@@ -125,10 +125,12 @@
      <Compile Include="Assets\Tuscany\Scripts\RandomAnimationStart.cs" />
      <Compile Include="Assets\Tuscany\Scripts\ScrollUVs.cs" />
      <Compile Include="Assets\Tuscany\Water (Basic)\Sources\Scripts\WaterSimple.cs" />
+     <None Include="Assets\Plugins\donotdelete.txt" />
      <None Include="Assets\LeapMotion\Materials\Sources\Shaders\Toony-Basic.shader" />
      <None Include="Assets\Tuscany\Models\Materials\TransparentTerrain.shader" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 3.shader" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 1.shader" />
+     <None Include="Assets\Plugins\x86_64\donotdelete.txt" />
      <None Include="Assets\Tuscany\Particles\Shaders\Particle Alpha Blend_IgnoreFog.shader" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 5.shader" />
      <None Include="Assets\LeapMotion\InteractionUtils (alpha)\readme.txt" />
@@ -147,6 +149,7 @@
      <None Include="Assets\Tuscany\Particles\Shaders\AddSmooth_Layer.shader" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 8.shader" />
      <None Include="Assets\OVR\Shaders\OVRGUIShader.shader" />
+     <None Include="Assets\Plugins\x86\donotdelete.txt" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 2.shader" />
      <None Include="Assets\LeapMotion\Shaders\LeapDistorted.shader" />
      <None Include="Assets\Tuscany\Models\Materials\Vertex color unlit 7.shader" />
@@ -154,7 +157,7 @@
      <None Include="Assets\Tuscany\Particles\Shaders\Add_Layer.shader" />
      <None Include="Assets\Tuscany\Models\Materials\AlphaTest-DiffuseBack.shader" />
  <Reference Include="LeapCSharp.NET3.5">
- <HintPath>C:/Users/Rob/Desktop/Third_Year_Project_Work/ThirdYearProject/VR_Archery_Phase1/Assets/LeapCSharp.NET3.5.dll</HintPath>
+ <HintPath>C:/Users/Rob/Desktop/Third_Year_Project_Work/ThirdYearProject/VR_Archery_Phase1/Assets/Plugins/LeapCSharp.NET3.5.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
